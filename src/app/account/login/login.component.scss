@@ -1,0 +1,76 @@
+.signin-box{font-family:'Gotham-Light';text-align: center;
+    ::placeholder {color: black;opacity: 1;}
+
+    .brand{ font-family:  'GothamMedium';display: flex;justify-content: center;align-items: center;text-align: center;
+
+    h5{ margin: 0px; padding: 0px;}
+    .brand-name{text-align: right;
+
+    .brand-logo{ width:25px; height:25px; } }
+
+    .brand-sub-name{ text-align: left; }
+
+    .vl{border-left: 1px solid grey; height: 22px;margin: 0px 10px;}}
+
+    .signin-form{margin-top: 3rem !important;
+        h6{font-size: 1rem;font-family: 'GothamMedium'}
+    .form-group{
+        input{ width: 100%;height: 2.4rem;
+            background-color: #edf0f7;
+            // background: #edf0f7;//  border: none;
+          border-color:#edf0f7; border-radius: 1.625rem;font-size: 14px;
+        text-align: center;font-family: 'GothamBookRegular'
+    }
+}
+
+    .btn{ height: 2.4rem;width: 100%;border-radius: 50px;font-size:1rem!important;font-family: 'GothamBold';
+        background-color: #ec0318;border: none;outline: none;
+        }
+.btn:focus { outline: none !important; box-shadow: none !important; }
+}
+
+hr{width: 70%;margin:2rem auto; }
+        span{ padding-left: 5px; color: #3196e1; cursor: pointer;font-family: 'GothamMedium';font-size: 12px;text-decoration: underline;}
+}
+label{font-size: 12px;font-family: 'GothamMedium'}
+
+.button {
+    background-color: #4CAF50; border: none;color: white;padding: 8px 30px;text-align: center;text-decoration: none;
+    display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;}
+  
+  .button4 {background-color: #e7e7e7; color: black;border-radius:50px;}  
+
+ .button4:hover{background:#ff0000;color: #fff;}
+.active{background:#ff0000; color: #fff;}
+.tittle{text-align: center;padding: 8px;border-bottom: 1px solid #dee2e6;
+    h1{font-size: 1.0rem;font-family: 'GothamBold';}
+}
+.chatdepartment{height: 60vh;width: 100%;flex-direction: column;overflow-y: auto;overflow-x: hidden;padding: 2px 0 2px 0;}
+.footer{position: absolute;bottom: 28px;width: 100%;margin: 0;right: 0;}
+
+.end-popup{
+    background:#fff;color: black;text-align: center; width:85%;padding: 1.8rem 3rem;border-radius: 10px;box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+    margin: auto;position:absolute;right:0;left:0;bottom:90px;
+    
+    h5{font-size: 1rem;margin-bottom: 0px;}
+  
+    .btn-end{
+        background-color: black;
+    color: white;
+    border-radius: 50px;
+    padding: 0.3rem 3rem;
+    font-size: 1rem !important;
+    }
+  
+    h6{
+     font-size: 1rem;
+     a{color: #4598f1; text-decoration: underline;}
+    }
+  }
+
+.eoslc4{position: absolute;margin-top: -87px;display: flex;}
+.eoslc4 span {padding-left: 5px;color: #3196e1;cursor: pointer;font-family: "GothamMedium";font-size: 12px;text-decoration: underline;
+    float: inline-start;
+}
+.chatdepartment1{height: 43vh;width: 100%;flex-direction: column;overflow-y: auto;overflow-x: hidden;padding: 2px 0 2px 0;}
+

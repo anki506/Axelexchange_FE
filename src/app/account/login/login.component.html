@@ -1,0 +1,295 @@
+
+ <div *ngIf="logindisplay">
+ <div class="eoslc4" *ngIf="reccharts" (click)="getrecentchat();">
+     <i style="color: #3196e1;" class="fa-solid fa-angle-left"></i>
+     <span>Saved</span>
+</div> 
+<!-- login page start-->
+<div class="container" *ngIf="signclick">
+    <div class="row justify-content-center" >
+        <div class="col-md-12 col-sm-12 signin-box">   
+            <div class="col-lg-12 col-md-12 col-sm-12 signin-form m-auto">
+
+                <h6 class="d-flex justify-content-center">Sign in to talk with our team:</h6>
+                <form [formGroup]="Strform" (ngSubmit)="onLoginSubmit()">
+                    <div class="form-group mt-3 col-lg-12 mx-auto">
+                        <input type="email" class="form-control" tabindex="1" formControlName="email" placeholder="Email Address" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors['email']"> Please enter valid Email Address</div>
+                        </div>  
+                    </div>
+                    <div class="form-group mt-2 col-lg-12 mx-auto">
+                        <input type="password" class="form-control" tabindex="2" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">      
+                    </div>
+
+                    <div class=" mt-2 signin-btn">
+                        <button class="btn btn-dark" [disabled]="signloading" tabindex="3">Sign In</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="mt-3"><label>Don't have an account?</label><span (click)="register();" >Sign Up Here.</span></div>
+
+            <hr >
+
+            <div class="mt-3"><label>Continue as a guest.</label> <span (click)="guestUser();">Click here</span></div>
+        </div>
+    </div>
+</div>
+<!-- login page end-->
+<!-- Guest page start-->
+<div class="guest" *ngIf="guestwithoutname">
+    <img src="../../../assets/images/Dog.png" style="height: 200px;">
+    <h1>We're here to help.</h1>
+    <div class="chat_">
+        <span><img src="../../assets/images/chat_icon.png" style="width:22px;"></span>&nbsp;<span>Chat Now</span>
+    </div>
+    <div>
+        <div class="msg_text_box"  >
+            <div class="msg_box">
+                <textarea rows="2" placeholder="Chat" (keydown.enter)="chatsend($event)" style="resize: none; height: 22px;" #chatmessage></textarea>
+                <a (click)="myHomeClickFunction()"><img src="../../assets/images/Send_Icon.png" style="margin-top:-5px;cursor: pointer;width:22px;"></a>
+            </div>
+        </div>
+    </div>
+    <p>or Call</p>
+    <button class="btn phone"><span><img src="../../assets/images/phone_icon.png" style="height:15px;"></span>&nbsp;<a href="tel:5106576600">510-657-6600</a></button>
+</div>
+<!-- Guest page end-->
+<!-- guestuser page start-->
+<div class="container" *ngIf="guestclick">
+    <div class="row d-flex justify-content-center" >
+        <div class="col-lg-12 col-md-12 col-sm-12 signin-box">   
+            <div class="col-lg-12 col-md-12 col-sm-12 signin-form m-auto">
+
+                <h6 class="d-flex justify-content-center">Sign in to talk with our team:</h6>
+                <form [formGroup]="guestform" (ngSubmit)="guestonSubmit()">
+                    <div class="form-group mt-3 col-lg-12 mx-auto">
+                        <input type="text" class="form-control" formControlName="username" maxlength="50" tabindex="1" placeholder="Name" [ngClass]="{ 'is-invalid': submitted && gu['username'].errors }">                     
+                    </div>
+                    <div class="mt-3 cbs">If the conversation is disrupted or you do not wish to wait, please provide your phone number so a member of our team can call you.</div>
+                    <div class="form-group col-lg-12 mx-auto">
+                        <input type="text" class="form-control" formControlName="phonenumber" placeholder="Phone Number" tabindex="2" maxlength="12" mask='000-000-0000'>             
+                        <div *ngIf="submitted && gu['phonenumber'].errors" class="invalid-feedback">                        
+                            <div *ngIf="gu['phonenumber'].errors['pattern']"> Pls enter minimum length</div>
+                        </div>  
+                    </div>
+
+                    <div class=" mt-3 signin-btn">
+                        <button class="btn btn-dark" [disabled]="guestloading"  (click)="resisters();" tabindex="3">Start Conversation</button>
+                    </div>
+                    <div class="mt-2">
+                        <span><a  (click)="sining();" >Cancel</a></span>
+                   </div>                
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- guestuser page end-->
+<!-- registration page start-->
+<div class="container" *ngIf="registerclick">
+    <div class="row justify-content-center" >
+        <div class="col-lg-12 col-md-12 col-sm-12 signin-box">   
+            <div class="col-lg-12 col-md-12 col-sm-12 signin-form m-auto">
+
+                <h6 class="d-flex justify-content-center">Sign up to save your conversations <br/>with our team:</h6>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group mt-2 col-lg-12 mx-auto">
+                        <input type="text" class="form-control" formControlName="username" placeholder="Your Name" maxlength="50" tabindex="1" [ngClass]="{ 'is-invalid': submitted && fu['username'].errors }">                    
+                    </div>
+                    <div class="form-group mt-2 col-lg-12 mx-auto">
+                        <input type="text" class="form-control" formControlName="phonenumber" placeholder="Phone Number" maxlength="12" tabindex="2" mask='000-000-0000'>             
+                        <div *ngIf="submitted && fu['phonenumber'].errors" class="invalid-feedback">                        
+                            <div *ngIf="fu['phonenumber'].errors['pattern']"> Pls enter minimum length</div>
+                        </div>  
+                    </div>
+                    <div class="form-group mt-2 col-lg-12 mx-auto">
+                        <input type="email" class="form-control" formControlName="email" placeholder="Email Address" tabindex="3" [ngClass]="{ 'is-invalid': submitted && fu['email'].errors }">
+                        <div *ngIf="submitted && fu['email'].errors" class="invalid-feedback">
+                            <div *ngIf="fu['email'].errors['email']"> Please enter valid Email Address</div>
+                        </div> 
+                    </div>
+                    <div class="form-group mt-2 col-lg-12 mx-auto">
+                        <input type="password" class="form-control" formControlName="password" placeholder="Password" tabindex="4" [ngClass]="{ 'is-invalid': submitted && fu['password'].errors }">
+                        <div *ngIf="submitted && fu['password'].errors" class="invalid-feedback">
+                            <div *ngIf="fu['password'].errors['minlength']">Password must be at least 4 characters</div>
+                        </div>                     
+                    </div>
+
+                    <div class=" mt-2 signin-btn">
+                        <button [disabled]="registerloading" class="btn btn-dark" tabindex="5">Sign Up</button>                     
+                    </div>
+                    <hr >
+
+            <div class="mt-3"><label>Continue as a guest.</label> <span (click)="guestUser();">Click here</span></div>                 
+                </form>
+            </div>          
+        </div>
+    </div>
+</div>
+<!-- registration page end-->
+<!-- home page start-->
+<div *ngIf="homeclick">
+<div class="col-8 mx-auto" *ngIf="homeTitle">
+
+<div class="tittle">
+    <h1>Welcome, {{loginuser}}!</h1>
+</div>
+</div>
+
+<div class="container" *ngIf="guesthomeclick">
+    <div class="row d-flex justify-content-center" >
+        <div class="col-lg-12 col-md-12 col-sm-12 signin-box" >   
+            <div style="margin-top: 0rem !important;" class="col-lg-12 col-md-12 col-sm-12 signin-form m-auto">
+
+                <!-- <h6 class="d-flex justify-content-center">Sign in to talk with our team:</h6> -->
+                <form [formGroup]="guesthform" (ngSubmit)="guestonhSubmit()">
+                    <div class="form-group mt-3 col-lg-12 mx-auto">
+                        <input type="text" class="form-control" formControlName="name" maxlength="50" tabindex="1" placeholder="Name" [ngClass]="{ 'is-invalid': submitted && hu['name'].errors }">                     
+                    </div>
+                    <div class="form-group col-lg-12 mt-3  mx-auto">
+                        <input type="text" class="form-control" formControlName="phno" placeholder="Phone Number" tabindex="2" maxlength="12" mask='000-000-0000'>             
+                        <div *ngIf="submitted && hu['phno'].errors" class="invalid-feedback">                        
+                            <div *ngIf="hu['phno'].errors['pattern']"> Pls enter minimum length</div>
+                        </div>  
+                    </div>
+
+                    <div class=" mt-3 signin-btn">
+                        <button class="btn btn-dark" [disabled]="guesthloading"  (click)="hresisters();" tabindex="3">Update</button>
+                    </div>
+                                  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-11 mx-auto">
+<div id="scrollMe" [ngClass]="something === 'C' ? 'chatdepartment1' : 'chatdepartment'" #scrollMe [scrollTop]="scrolltop" infinite-scroll infinite-scroll [infiniteScrollDistance]="5"
+[infiniteScrollThrottle]="50" [scrollWindow]="false" (scrolledUp)="onScroll()">
+<div class="text-center pt-5 pb-3" *ngIf="homedept">
+    <p style="font-family: 'GothamMedium';">What can we help you with today?</p>
+   <div>
+    <div class="button button4" [ngClass]="{'active': item.Dept_Id == tagid}" *ngFor="let item of ptags" (click)="tagsClick(item.Dept_Id,item.Dept_Name)">{{item.Dept_Name}}</div>
+    </div>  
+</div>
+<div class="mesg_chat">
+    <div *ngFor="let conUserItems of messages;let i = index">
+        <div class="rlp_det" *ngIf="conUserItems.MSG_FROM=='F' && conUserItems.MSG_TYPE=='TI'">
+            <div class="rlp_msg"><label>{{conUserItems.UserName}},&nbsp;<span>{{conUserItems.MSG_CREATEDTS }}</span></label>
+                <div class="person_chat" [innerHtml]="conUserItems.MSG_DESC"></div>
+            </div>
+        </div>
+        <div class="rlp_det" *ngIf="conUserItems.MSG_FROM=='F' && conUserItems.MSG_TYPE=='T'">
+            <div class="rlp_msg"><label>{{conUserItems.FromUserName}},&nbsp;<span>{{conUserItems.MSG_CREATEDTS | utcConvert : 'L'}}</span></label>
+                <div class="person_chat" [innerHtml]="conUserItems.MSG_DESC"></div>
+            </div>
+        </div>
+        <div  *ngIf="conUserItems.MSG_FROM=='F' && conUserItems.MSG_TYPE=='E'" class="decoratedLine vlabelBold"><span>{{conUserItems.MSG_DESC}}</span></div>
+        <div  *ngIf="conUserItems.MSG_FROM=='A' && (conUserItems.MSG_TYPE=='E' || conUserItems.MSG_TYPE=='C')" class="decoratedLine vlabelBold"><span>{{conUserItems.MSG_DESC}}</span></div>
+        <div  *ngIf="conUserItems.MSG_FROM=='A' && conUserItems.MSG_TYPE=='S'" class="decoratedLine vlabelBold"><span>{{conUserItems.MSG_DESC}}</span></div>
+       
+        <div *ngIf="conUserItems.MSG_FROM=='A' && conUserItems.MSG_TYPE=='T' && conUserItems.MSG_STATUS!='D'" class="pers_det">
+            <div class="d-flex align-items-end">
+                <div class="person_pic"></div>
+                <label style="font-size: 0.6rem;margin:0 0 0.7rem 0.5rem;">{{conUserItems.FromUserName}}, <span>{{conUserItems.MSG_CREATEDTS | utcConvert : 'L'}}</span></label>   
+            </div>          
+            <div class="person_msg"><div class="person_chat" [innerHtml]="conUserItems.MSG_DESC"></div> </div>
+        </div>
+
+        <div *ngIf="conUserItems.MSG_FROM=='A' && conUserItems.MSG_TYPE=='F' && conUserItems.MSG_STATUS!='D'"  class="pers_det">
+            <div class="d-flex align-items-end">
+                <div class="person_pic"></div>
+                <label style="font-size: 0.6rem;margin:0 0 0.7rem 0.5rem;">{{conUserItems.FromUserName}}, <span>{{conUserItems.MSG_CREATEDTS | utcConvert : 'L'}}</span></label>   
+            </div>          
+            <div  *ngIf="conUserItems.MSG_STATUS!='D'" class="person_msg"><div class="person_chat"><img [src]="(imgpath+conUserItems.MSGFILE+'.'+conUserItems.MSG_FILETYPE)" style="width:200px;"></div> </div>
+            <div *ngIf="conUserItems.MSG_STATUS=='D'" class="person_msg"><div class="person_chat" [innerHtml]="conUserItems.MSG_DESC"></div> </div>         
+        </div>      
+
+    </div>
+        
+</div>
+
+</div>
+
+</div>
+  <div class="msg_text_box"  *ngIf="isButtonVisible">
+    <div class="msg_box">
+        <!-- <div class="smiley"><img src="assets/images/smiley.png"></div> -->
+        <img *ngIf="ischatbubble"  src='../../../assets/images/chatbubble.gif' style="width:40px;position: absolute;margin-bottom: 4rem">
+        <textarea rows="2" placeholder="Type your message" style="resize: none; height: 22px;" (keydown.enter)="send($event)" (focus)="focusFunction();" #usermessage></textarea>
+
+        <!-- <a><img src="../../assets/images/pin.png" style="margin-top:-5px;"></a> -->
+        <a (click)="myClickFunction()"><img src="../../assets/images/Send_Icon.png" style="margin-top:-5px;cursor: pointer;width: 22px;"></a>
+    </div>
+</div>
+
+<div *ngIf="convhistory" class="col-11 mx-auto" style="display: table;font-family: GothamMedium;">To save this conversation, please sign up with an account.</div>
+
+<div style="display: table;width: 100%;padding: 0rem 1rem 0rem 0.0rem;">
+    <div class="form-group text-center" > 
+     <a class="btn btn-link" *ngIf="isStartNew" (click)="StartNew();">Start New</a>  
+     <a class="btn btn-link" *ngIf="isButtonEnd" (click)="ExitChat();">End conversation</a>  
+     <a class="btn btn-link" *ngIf="isSignoutVisible" (click)="Signup();">Sign Out</a> 
+     <a class="btn btn-link" *ngIf="issignUpbutton" (click)="isSignup();">Sign Up</a>
+    </div>
+</div>
+
+</div>
+<!-- home page end-->
+
+<div class="row footer" *ngIf="isfooter">
+    <div class="header">
+        <!-- <img src="assets/images/Exchange-Logo.png"> -->
+        <img src="assets/images/MicrosoftTeams-image.png">
+    </div>
+    </div>
+          
+
+    <div class="end-popup" *ngIf="endconversation">
+        <h5 >Are you sure you want to end this conversation?</h5>
+        <button class="btn btn-end mt-3" (click)="ConversationEnd();" >End</button>
+        <h6 class="mt-3 mb-0"><a style="cursor:pointer;" (click)="Cancelconv();">Cancel</a></h6>
+  </div>
+      
+    <div class="end-popup" *ngIf="signoff">
+        <h5 >Are you sure you want to sign off?</h5>
+        <button class="btn btn-end mt-3" (click)="popsignoff();">Sign off</button>
+        <h6 class="mt-3 mb-0"><a style="cursor:pointer;" (click)="Cancelsignoff();">Cancel</a></h6>
+    </div>
+    
+    <div class="end-popup" *ngIf="newregister">
+        <h5 >You already have a login, you want to create a new one?</h5>
+        <button class="btn btn-end mt-3" (click)="registeroff();">Yes</button>
+        <h6 class="mt-3 mb-0"><a style="cursor:pointer;" (click)="Cancelregisteroff();">Cancel</a></h6>
+    </div>
+
+    <div class="end-popup" *ngIf="nologinuser">
+        <h5 >{{singup}}</h5>
+        <button class="btn btn-end mt-3" (click)="loginusercancel();">Ok</button>      
+    </div>
+    <div class="end-popup" *ngIf="entertext">
+        <h5 >Enter text message.</h5>
+        <button class="btn btn-end mt-3" (click)="pentertext();">Ok</button>
+    </div>
+    <div class="end-popup" *ngIf="startnewconv">
+        <h5 >Are you sure you want to start new conversation?</h5>
+        <button class="btn btn-end mt-3" (click)="NewConversation();" >Yes</button>
+        <h6 class="mt-3 mb-0"><a style="cursor:pointer;" (click)="Cancelnewconv();">Cancel</a></h6>
+  </div>
+  <div class="end-popup" *ngIf="agentstatus">
+    <h5 >No agent available at this time. someone will get back to you</h5>
+    <button class="btn btn-end mt-3" (click)="agentstatus=!agentstatus" >Ok</button>
+</div>
+
+</div> 
+<div id="divshow" *ngIf="display==='B'">
+    <app-recentcharts></app-recentcharts>
+</div>
+
+
+
+
+
+

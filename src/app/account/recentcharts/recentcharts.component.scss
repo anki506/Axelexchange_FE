@@ -1,0 +1,74 @@
+.mesg {overflow-x: hidden;overflow-y: auto;height:75vh;}
+.msg_det {width: 75%;}
+.mesg ul { margin: 0; padding: 0; list-style-type: none; text-align: left;}
+.mesg_pic {width: 45px;height: 45px;border-radius: 50px;border: 1px solid #ccc;margin: 10px 10px 10px 0;float: left;
+background: url(../../../assets/images/profilepic.jpg) no-repeat;background-size: 100%;
+}
+
+.mesg ul li a{text-decoration: none;color: #222;height: auto;letter-spacing: .5px;padding: 10px 5px 10px 10px;display: block;
+text-align: left;margin: 1px;background: linear-gradient(to right,#ffffff 28%,#ffffff 25%,#eeeef0 58%);
+}
+
+.mesg ul li a:hover{background: #eeeef0;}
+
+.msg_det .msgname { width: 100%;text-align: left;font-size: 11px;margin: 0;float: left;font-family: 'GothamBold'!important;
+}
+.mesg_text {text-align: left;font-size: 9px;line-height: 15px;padding: 25px 0 0;margin: 2px 0;}
+.mesg_date {width: 25%;color: #000;font-size: 10px;text-align: center;}
+
+.msg_det .msgdesg {width: 100%;text-align: left;text-transform: capitalize;font-family: 'GothamMedium'!important;font-size: 8px;color: #3196e1;
+    margin: 0;float: left;overflow-x: hidden;white-space: nowrap;text-overflow: ellipsis;}
+    .mesg::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px #101110;background-color: #F5F5F5;}
+
+    .mesg::-webkit-scrollbar{width: 3px;background-color: #F5F5F5;}
+
+    .mesg::-webkit-scrollbar-thumb{background-color: #000;}
+
+    #scrollMe1::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px #101110;background-color: #F5F5F5;}
+
+    #scrollMe1::-webkit-scrollbar{width: 3px;background-color: #F5F5F5;display: none;}
+
+    #scrollMe1::-webkit-scrollbar-thumb{background-color: #000;}
+
+    .chatdepartment{height: 75vh;width: 100%;flex-direction: column;overflow-y: auto;overflow-x: hidden;padding: 2px 0 2px 0;}
+
+    .mesg_chat{ width: 100%;
+        // max-height: 56vh;overflow: auto;
+        .pers_det{ margin-top: .5rem;
+            .person_pic{width: 40px;; height: 40px; border-radius: 50px;border: 1px solid #ccc; padding-right: .5rem;background: url(../../../assets/images/profilepic.jpg) no-repeat;background-size: 100%;}
+            .person_msg{width: 100%;
+                 label{font-size: .6rem; color: #333; margin: 0 0 0 .5rem;}
+                .person_chat{height: auto; background: #ecf0f6; border-radius: 0 10px 10px 10px;color: #000;
+                    padding: 1rem; font-size:.9rem;margin:.2rem auto .2rem .5rem ;width: fit-content;}
+            }
+            
+    
+        }
+        .rlp_det{margin-top: .5rem;display: flex;  justify-content: flex-end; 
+            .rlp_msg{width: 100%; justify-content: flex-end;
+                label{font-size: .6rem; color: #333; margin: 0 .7rem 0 0 ; display: flex;
+                    justify-content: flex-end;}
+               .person_chat{height: auto; background: #d8efff; border-radius:10px 0  10px 10px;color: #000;
+                   padding: 1rem; font-size:.9rem;margin:.2rem .5rem .2rem auto;width: fit-content;}
+            }
+        }
+    }
+
+    .eoslc4{position: absolute;margin-top: -87px;display: flex;}
+.eoslc4 span {padding-left: 5px;color: #3196e1;cursor: pointer;font-family: "GothamMedium";font-size: 12px;text-decoration: underline;
+    float: inline-start;
+}
+
+.decoratedLine {overflow: hidden;display: flex;justify-content: center;align-items: center;width: 100%;margin: 1rem 0rem;font-size:0.7rem;
+	>span {position: relative;display: inline-block;
+		&:before {
+			content: '';position: absolute;top: 50%;transform: translateY(-50%);border-bottom: 1px solid rgb(182, 180, 180);
+			width: 100vw;color: #333;margin: 0 20px;right: 100%;
+		}
+		&:after {
+			content: '';position: absolute;top: 50%;transform: translateY(-50%);border-bottom: 1px solid rgb(182, 180, 180);
+			width: 100vw;color: #333;margin: 0 20px;left: 100%;
+		}
+	}
+}
+    

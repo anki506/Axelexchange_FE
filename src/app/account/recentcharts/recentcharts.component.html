@@ -1,0 +1,72 @@
+
+<div>
+<div *ngIf="gback" class="eoslc4" (click)="getback();">
+    <i style="color: #3196e1;transform: rotate(180deg);" class="fa-solid fa-angle-left"></i>
+    <span>Saved</span>
+</div>
+<div *ngIf="glist" class="eoslc4" (click)="getlist();">
+    <i style="color: #3196e1;transform: rotate(180deg);" class="fa-solid fa-angle-left"></i>
+    <span>Back</span>
+</div>
+<!--Save chats start-->
+
+<div class="mesg" *ngIf="Totalcharts">
+    <div>
+    <ul>
+    <li style="cursor: pointer;" *ngFor="let term of recentcharts" (click)="messageclick(term.conid)">
+    <div class="mesg_pic"><!----></div>
+    <a>
+    <div class="d-flex align-items-start">
+    <div class="msg_det">
+    <div class="msgname">{{term.convname}}</div>
+    <div class="msgdesg">{{term.StoreName}}</div>
+    <div class="mesg_text">{{term.lastmsg}}</div>
+    </div>
+    <div class="mesg_date">{{term.last_updated | utcConvert : 'L'}}</div>
+    </div>
+    </a>
+    </li>
+    <!----><!---->
+    </ul>
+    </div>
+</div>
+
+<!--Save chats end-->
+<!--user recent charts start-->
+<div class="col-11 mx-auto" *ngIf="particularchart">
+    <div id="scrollMe1" class="chatdepartment" #scrollMe1 [scrollTop]="scrolltop1" infinite-scroll infinite-scroll [infiniteScrollDistance]="5"
+    [infiniteScrollThrottle]="50" [scrollWindow]="false" (scrolledUp)="onScroll1()">
+    <div class="mesg_chat">
+        <div *ngFor="let recentUserItems of usercharts;">
+            <div class="rlp_det" *ngIf="recentUserItems.MSG_FROM=='F' && recentUserItems.MSG_TYPE=='T'">
+                <div class="rlp_msg"><label>{{recentUserItems.FromUserName}},&nbsp;<span>{{recentUserItems.MSG_CREATEDTS | utcConvert : 'L'}}</span></label>
+                    <div class="person_chat" [innerHtml]="recentUserItems.MSG_DESC"></div>
+                </div>
+            </div>
+            <div  *ngIf="recentUserItems.MSG_FROM=='F' && recentUserItems.MSG_TYPE=='E'" class="decoratedLine vlabelBold"><span>{{recentUserItems.MSG_DESC}}</span></div>
+            <div  *ngIf="recentUserItems.MSG_FROM=='A' && (recentUserItems.MSG_TYPE=='E' || recentUserItems.MSG_TYPE=='C')" class="decoratedLine vlabelBold"><span>{{recentUserItems.MSG_DESC}}</span></div>
+            <div  *ngIf="recentUserItems.MSG_FROM=='A' && recentUserItems.MSG_TYPE=='S'" class="decoratedLine vlabelBold"><span>{{recentUserItems.MSG_DESC}}</span></div>
+           
+            <div *ngIf="recentUserItems.MSG_FROM=='A' && recentUserItems.MSG_TYPE=='T' && recentUserItems.MSG_STATUS!='D'" class="pers_det">
+                <div class="d-flex align-items-end">
+                    <div class="person_pic"></div>
+                    <label style="font-size: 0.6rem;margin:0 0 0.7rem 0.5rem;">{{recentUserItems.FromUserName}}, <span>{{recentUserItems.MSG_CREATEDTS | utcConvert : 'L'}}</span></label>   
+                </div>          
+                <div class="person_msg"><div class="person_chat" [innerHtml]="recentUserItems.MSG_DESC"></div> </div>
+            </div>  
+
+            <div *ngIf="recentUserItems.MSG_FROM=='A' && recentUserItems.MSG_TYPE=='F' && recentUserItems.MSG_STATUS!='D'"  class="pers_det">
+                <div class="d-flex align-items-end">
+                    <div class="person_pic"></div>
+                    <label style="font-size: 0.6rem;margin:0 0 0.7rem 0.5rem;">{{recentUserItems.FromUserName}}, <span>{{recentUserItems.MSG_CREATEDTS | utcConvert : 'L'}}</span></label>   
+                </div>          
+                <div  *ngIf="recentUserItems.MSG_STATUS!='D'" class="person_msg"><div class="person_chat"><img [src]="(imgpath+recentUserItems.MSGFILE+'.'+recentUserItems.MSG_FILETYPE)" style="width:200px;"></div> </div>
+                <div *ngIf="recentUserItems.MSG_STATUS=='D'" class="person_msg"><div class="person_chat" [innerHtml]="recentUserItems.MSG_DESC"></div> </div>         
+            </div> 
+        </div>           
+    </div>   
+    </div>  
+    </div>
+</div>
+
+<!--user recent charts end-->
